@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #1565c0;
+  --color-primary-dark: #0d47a1;
+  --color-primary-light: #e3f2fd;
+  --color-bg: #f7f9fc;
+  --color-white: #ffffff;
+  --color-text: #1b2430;
+  --color-text-muted: #5b6472;
+  --color-border: #e2e8f0;
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-bg: var(--color-bg);
+  --color-border: var(--color-border);
+  --font-thai: "Noto Sans Thai", "Waree", sans-serif;
+}
+
+.font-thai {
+  font-family: "Noto Sans Thai", "Waree", sans-serif;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Print rules: certificate viewer renders a full A4-fit page and hides
+   everything else (header, nav, buttons) via the .no-print utility. */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+
+  .print-area {
+    position: absolute;
+    inset: 0;
+    width: 210mm;
+    height: 297mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
